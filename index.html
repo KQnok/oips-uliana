@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO: Title (стр. 5 методички) -->
+    <!-- SEO: Title -->
     <title>Обучение кулинарии: записаться на кулинарные курсы для начинающих</title>
 
-    <!-- SEO: Description (стр. 5-6 методички) -->
+    <!-- SEO: Description -->
     <meta name="description" content="Пройдите профессиональное обучение кулинарии в нашей школе. Узнайте, как научиться готовить вкусно с нуля. Лучшие кулинарные курсы для начинающих!">
 
     <!-- Подключение шрифтов Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
     <style>
-        /* Общие сбросы и переменные цветов */
+        /* --- ОСНОВНЫЕ СТИЛИ --- */
         :root {
             --bg-color: #121212;
             --card-bg: #1e1e1e;
             --text-main: #e0e0e0;
             --text-muted: #aaaaaa;
-            --accent-red: #d32f2f; /* Красный для акцентов */
-            --accent-red-bright: #ff4444; /* Яркий красный для заголовков */
-            --accent-orange: #ff9800; /* Оранжевый для кнопок (Call to Action) */
+            --accent-red: #d32f2f;
+            --accent-red-bright: #ff4444;
+            --accent-orange: #ff9800;
             --accent-orange-hover: #e65100;
         }
 
@@ -63,14 +63,13 @@
         strong { color: white; font-weight: 700; }
         em { color: var(--accent-orange); font-style: normal; }
 
-        /* Контейнер */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* HERO СЕКЦИЯ (Первый экран) */
+        /* HERO СЕКЦИЯ */
         header.hero {
             height: 90vh;
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
@@ -83,7 +82,6 @@
             text-align: center;
         }
 
-        /* SEO: H1 должен быть чистым, но стилизовать его через CSS можно (стр. 6) */
         header.hero h1 {
             font-size: 3.5rem;
             color: white;
@@ -94,7 +92,7 @@
             padding-bottom: 20px;
         }
 
-        /* Основной контент */
+        /* Контент */
         .intro-text {
             text-align: center;
             max-width: 800px;
@@ -102,7 +100,6 @@
             font-size: 1.2rem;
         }
 
-        /* Изображения */
         .image-block {
             margin: 40px 0;
             position: relative;
@@ -119,11 +116,9 @@
             transition: transform 0.5s ease;
         }
 
-        .image-block:hover img {
-            transform: scale(1.05);
-        }
+        .image-block:hover img { transform: scale(1.05); }
 
-        /* Списки преимуществ (Карточки) */
+        /* Карточки преимуществ */
         .benefits-list {
             list-style: none;
             display: grid;
@@ -145,7 +140,7 @@
             background-color: #252525;
         }
 
-        /* Программа курса (Список) */
+        /* Программа курса */
         .course-program {
             background-color: var(--card-bg);
             padding: 40px;
@@ -179,7 +174,7 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* CTA Кнопка (Призыв к действию) */
+        /* CTA Кнопка */
         .cta-container {
             text-align: center;
             padding: 80px 0;
@@ -207,6 +202,18 @@
             background: linear-gradient(45deg, #ff5722, var(--accent-orange));
         }
 
+        /* Стили для блока анкоров (SEO) */
+        .safe-anchors {
+            margin-top: 40px;
+            padding: 20px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 10px;
+        }
+        .safe-anchors h2 { font-size: 1.5rem; margin-top: 0; text-align: left; color: white; }
+        .safe-anchors ul { list-style: none; display: flex; flex-wrap: wrap; gap: 15px; }
+        .safe-anchors a { color: var(--accent-orange); text-decoration: none; border-bottom: 1px dashed; }
+
         /* Футер */
         footer {
             background-color: black;
@@ -226,27 +233,112 @@
             font-weight: bold;
             transition: 0.3s;
         }
+        .social-buttons button:hover { background: var(--accent-red); }
 
-        .social-buttons button:hover {
-            background: var(--accent-red);
-            color: white;
+        /* ---------------------------------------------------- */
+        /* АДАПТАЦИЯ ПОД МОБИЛЬНЫЕ УСТРОЙСТВА (Responsive CSS) */
+        /* ---------------------------------------------------- */
+
+        /* 1. Планшеты и маленькие ноутбуки (меньше 1024px) */
+        @media (max-width: 1024px) {
+            header.hero h1 {
+                font-size: 2.5rem; /* Уменьшаем заголовок */
+            }
+            .container {
+                padding: 0 15px; /* Уменьшаем отступы по бокам */
+            }
         }
 
+        /* 2. Планшеты и крупные телефоны (меньше 768px) */
+        @media (max-width: 768px) {
+            header.hero {
+                height: auto; /* Высота по содержимому, чтобы текст влез */
+                min-height: 60vh;
+                padding: 60px 0;
+            }
+
+            header.hero h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+                margin-top: 40px;
+            }
+
+            /* Преимущества в одну колонку */
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+
+            /* Блок "Программа курса" - картинка уходит под текст */
+            .course-program {
+                padding: 20px; /* Меньше внутренний отступ */
+            }
+        }
+
+        /* 3. Мобильные телефоны (меньше 480px) */
+        @media (max-width: 480px) {
+            header.hero h1 {
+                font-size: 1.6rem;
+                border-bottom-width: 3px;
+            }
+
+            .intro-text {
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            /* Кнопка на всю ширину для удобства нажатия пальцем */
+            .cta-button {
+                width: 100%;
+                display: block;
+                padding: 15px;
+                font-size: 1.2rem;
+            }
+
+            .cta-container {
+                padding: 40px 10px;
+            }
+
+            /* Соцсети в столбик */
+            .social-buttons button {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            /* Список программы */
+            .course-program li {
+                padding-left: 35px;
+                font-size: 1rem;
+            }
+            .course-program li::before {
+                width: 25px;
+                height: 25px;
+                line-height: 25px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-<!-- Секция 1: Главный экран -->
 <header class="hero">
     <div class="container">
-        <!-- ТРЕБОВАНИЕ СТР. 6: Заголовок H1 (Ключ: обучение кулинарии) -->
         <h1>Обучение кулинарии <br><span style="font-size:0.6em; color: var(--accent-orange);">для новичков и любителей</span></h1>
     </div>
 </header>
 
 <main class="container">
 
-    <!-- Секция 2: Введение (Ключи: научиться готовить, школа поваров) -->
     <div class="intro-text">
         <p>
             Вы давно мечтаете удивлять близких гастрономическими шедеврами? Наше <strong>обучение кулинарии</strong> построено таким образом,
@@ -257,13 +349,11 @@
         </p>
     </div>
 
-    <!-- ТРЕБОВАНИЕ СТР. 7: Уникальное изображение + ALT -->
     <div class="image-block">
         <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
              alt="процесс обучения кулинарии на профессиональной кухне шеф повар">
     </div>
 
-    <!-- Секция 3: Преимущества (H2) -->
     <h2>Преимущества наших курсов</h2>
     <p style="text-align: center;">Почему наша <strong>школа поваров</strong> — лучший выбор для старта?</p>
 
@@ -282,7 +372,6 @@
         </li>
     </ul>
 
-    <!-- Секция 4: Программа (H2 + H3) -->
     <h2>Программа интенсива</h2>
 
     <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 40px; margin-top: 30px;">
@@ -296,19 +385,27 @@
             </ol>
         </div>
         <div style="flex: 1; min-width: 300px;" class="image-block">
-            <!-- Еще одно изображение с ALT -->
             <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                  alt="готовое изысканное блюдо результат обучения кулинарии">
         </div>
     </div>
 
-    <!-- Секция 5: Призыв к действию (CTA) -->
     <div class="cta-container" id="form">
         <h2>Готовы стать шеф-поваром на своей кухне?</h2>
         <p>Чтобы пройти <strong>обучение кулинарии</strong>, запишитесь прямо сейчас. Количество мест в группе ограничено.</p>
         <br>
-        <!-- Кнопка конверсии -->
         <a href="#" class="cta-button">Записаться на курс</a>
+    </div>
+
+    <!-- Блок ссылок для перелинковки (из прошлых ЛР) -->
+    <div class="safe-anchors">
+        <h2>Наши безопасные и выгодные анкоры:</h2>
+        <ul>
+            <li><a href="http://yourcooking.site/recipes" title="Рецепты">Рецепты</a></li>
+            <li><a href="http://yourcooking.site/courses" title="Курсы">Курсы кулинарии</a></li>
+            <li><a href="http://yourcooking.site/blog" title="Блог о еде">Блог о еде</a></li>
+            <li><a href="http://yourcooking.site/school" title="Школа поваров">Школа поваров</a></li>
+        </ul>
     </div>
 
 </main>
@@ -322,7 +419,7 @@
             <button>WhatsApp</button>
         </div>
         <br>
-        <p>&copy; 2023 Cooking School. Все права защищены.</p>
+        <p>&copy; 2026 Cooking School. Все права защищены.</p>
     </div>
 </footer>
 
